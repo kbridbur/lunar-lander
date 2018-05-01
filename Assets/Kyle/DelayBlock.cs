@@ -6,6 +6,7 @@ public class DelayBlock : IBlock {
 	//Because the block may have multiple things calling Evaluate on it per frame we designate an output for each frame
 	public float Evaluate (int frame){
 		if (!FrameToInput.ContainsKey (frame)) {
+			FrameToInput [frame] = FrameToInput [frame - 1];
 			FrameToInput [frame] = Parents [0].Evaluate (frame);
 		}
 		return FrameToInput [frame - 1];
