@@ -33,7 +33,7 @@ public class Cell : MonoBehaviour {
             }
             occupantObject = Instantiate(gameManager.getActiveBlock(), this.transform);
             occupantObject.transform.localPosition = Vector3.zero;
-            occupantObject.transform.localScale = new Vector3(1, 1, 1);
+            occupantObject.transform.localScale = new Vector3(3, 3, 1);
         }
         else
         {

@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour {
         foreach(SpriteRenderer genericBlock in this.genericBlocks.GetComponentsInChildren<SpriteRenderer>())
         {
             GameObject objectGenericBlock = genericBlock.gameObject;
-            objectGenericBlock.transform.Rotate(new Vector3(0, 0, 90));
+            objectGenericBlock.transform.Rotate(new Vector3(0, 0, -90));
             objectGenericBlock.GetComponent<IBlock>().RotateClockwise();
         }
     }
