@@ -8,15 +8,16 @@ public class Thruster : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D> ();
 	}
 
-	// Update is called once per frame
-	void FixedUpdate () {
-		rb.AddForce (new Vector2(0, Thrust));
+	public float GetHeight(){
+		return transform.position.y - Ground.transform.position.y;
 	}
 
-	void OnCollisionEnter2D(Collision2D col){
-		Debug.Log ("wtf");
+	// Update is called once per frame
+	void FixedUpdate () {
+		rb.AddForce (new Vector2(0, ThrustManager.GetComponent<GameManager>().GetThrust()));
 	}
 
 	Rigidbody2D rb;
-	public float Thrust=0;
+	public GameObject ThrustManager;
+	public GameObject Ground;
 }
