@@ -82,12 +82,14 @@ public class GameManager : MonoBehaviour {
             }
         }
         simMode = true;
-		//Physics.gravity = new Vector3 (0, -9.8, 0);
 		Physics2D.gravity = new Vector2 (0, -9.8f);
     }
 
     public void exitSimMode()
     {
+		Lander.transform.position = new Vector3 (8.8f, 7, 0);;
+		Physics2D.gravity = Vector2.zero;
+		Lander.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         simMode = false;
         outputCell = null;
         frame = 0;
