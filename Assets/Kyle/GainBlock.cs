@@ -3,19 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GainBlock : IBlock {
-	public float Evaluate(int frame){
-		return Gain * Parents [0].Evaluate (frame);
+	public float Evaluate(int frame, List<float> inputs){
+		return Gain * inputs[0];
 	}
 
-	public void AddParent(IBlock b){
-		Parents.Add (b);
+	public void SetInputDirections(List<string> dirs){
+		InputDirections = dirs;
 	}
 
-	float Gain = 0;
-	List<IBlock> Parents;
-
-	public GainBlock(float gain, List<IBlock> parents){
-		Gain = gain;
-		Parents = parents;
-	}
+	public float Gain = 0;
+	public List<string> InputDirections;
 }

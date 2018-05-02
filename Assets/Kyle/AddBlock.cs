@@ -4,17 +4,13 @@ using UnityEngine;
 using System.Linq;
 
 public class AddBlock : IBlock {
-	public float Evaluate(int frame){
-		return Parents.Sum (i => i.Evaluate (frame));
+	public float Evaluate(int frame, List<float> inputs){
+		return inputs.Sum();
 	}
 
-	public void AddParent(IBlock b){
-		Parents.Add (b);
+	public void SetInputDirections(List<string> dirs){
+		InputDirections = dirs;
 	}
 
-	List<IBlock> Parents;
-
-	public AddBlock(List<IBlock> parents){
-		Parents = parents;
-	}
+	public List<string> InputDirections;
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class SystemController : MonoBehaviour {
 	void FixedUpdate () {
 		//gets the thrust for the current frame
-		float thrust = Root.Evaluate (I);
+		float thrust = Root.Evaluate (I, new List<float>());
 		I++;
 	}
 		
