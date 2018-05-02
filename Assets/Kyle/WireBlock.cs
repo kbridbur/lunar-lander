@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GainBlock : MonoBehaviour, IBlock
-{
-	public float Evaluate(int frame, List<float> inputs){
-		return Gain * inputs[0];
-	}
+public class WireBlock : MonoBehaviour, IBlock {
 
-	public void SetInputDirections(List<string> dirs){
-		InputDirections = dirs;
-	}
+    public float Evaluate(int frame, List<float> inputs)
+    {
+        return inputs[0];
+    }
+
+    public void SetInputDirections(List<string> dirs)
+    {
+        InputDirections = dirs;
+    }
 
     public List<string> GetInputDirections()
     {
@@ -42,6 +44,6 @@ public class GainBlock : MonoBehaviour, IBlock
         this.InputDirections = newDirections;
     }
 
-    public float Gain = 0;
-	public List<string> InputDirections;
+    public List<string> InputDirections;
+
 }
