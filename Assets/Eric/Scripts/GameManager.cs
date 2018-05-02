@@ -16,10 +16,11 @@ public class GameManager : MonoBehaviour {
     public GainBlock genericGain;
     public BaseBlock genericBase;
 	float thrustOutput = 0;
+	public GameObject Lander;
 
 	// Use this for initialization
 	void Start () {
-		
+		Physics2D.gravity = Vector2.zero;
 	}
 
 	public float GetThrust(){
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour {
         if (simMode)
         {
             frame++;
+			altitude = Lander.GetComponent<Thruster> ().GetHeight ();
             GameObject[] inputBlocks = GameObject.FindGameObjectsWithTag("Input");
             foreach (GameObject inputBlock in inputBlocks)
             {
@@ -80,6 +82,8 @@ public class GameManager : MonoBehaviour {
             }
         }
         simMode = true;
+		//Physics.gravity = new Vector3 (0, -9.8, 0);
+		Physics2D.gravity = new Vector2 (0, -9.8f);
     }
 
     public void exitSimMode()
