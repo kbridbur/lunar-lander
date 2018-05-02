@@ -15,10 +15,15 @@ public class GameManager : MonoBehaviour {
     public InputField genericConstant;
     public GainBlock genericGain;
     public BaseBlock genericBase;
+	float thrustOutput = 0;
 
 	// Use this for initialization
 	void Start () {
 		
+	}
+
+	public float GetThrust(){
+		return thrustOutput;
 	}
 	
 	// Update is called once per frame
@@ -33,6 +38,7 @@ public class GameManager : MonoBehaviour {
             }
             float output = outputCell.evaluate();
             Debug.Log(output);
+			thrustOutput = output;
         }
     }
 
