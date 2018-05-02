@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public float GetThrust(){
-		return thrustOutput;
+		return Mathf.Clamp(thrustOutput, 0, 50000f);
 	}
 	
 	// Update is called once per frame
@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour {
                 inputBlock.GetComponent<BaseBlock>().BaseVal = altitude;
             }
             float output = outputCell.evaluate();
-            Debug.Log(output);
 			thrustOutput = output;
         }
     }
@@ -107,6 +106,7 @@ public class GameManager : MonoBehaviour {
 
     public void setGenericConstant()
     {
+		Debug.Log (genericConstant.text);
         float constant;
         if (float.TryParse(genericConstant.text, out constant))
         {
