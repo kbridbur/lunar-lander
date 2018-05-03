@@ -50,6 +50,7 @@ public class Cell : MonoBehaviour {
         {
             occupant = occupantObject.GetComponent<IBlock>();
         }
+		Debug.Log (occupantObject);
         List<string> inputDirections = this.occupant.GetInputDirections();
         List<float> inputValues = new List<float>();
         foreach (string inputDirection in inputDirections)

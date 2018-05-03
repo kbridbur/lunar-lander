@@ -6,7 +6,8 @@ using System.Linq;
 public class AddBlock : MonoBehaviour, IBlock
 {
 	public float Evaluate(int frame, List<float> inputs){
-		return inputs.Sum();
+		Debug.Log (inputs);
+		return inputs.Sum(i => i);
 	}
 
 	public void SetInputDirections(List<string> dirs){

@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
     public BaseBlock genericBase;
 	float thrustOutput = 0;
 	public GameObject Lander;
+	public float goalHeight = 7;
 
 	// Use this for initialization
 	void Start () {
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour {
         if (simMode)
         {
             frame++;
-			altitude = Lander.GetComponent<Thruster> ().GetHeight ();
+			altitude = goalHeight - Lander.GetComponent<Thruster> ().GetHeight ();
             GameObject[] inputBlocks = GameObject.FindGameObjectsWithTag("Input");
             foreach (GameObject inputBlock in inputBlocks)
             {
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour {
             }
             float output = outputCell.evaluate();
 			thrustOutput = output;
+			Debug.Log (output);
         }
     }
 
