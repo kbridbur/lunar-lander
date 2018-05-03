@@ -4,4 +4,5 @@ public interface IBlock {
 	void SetInputDirections(List<string> dirs);
     List<string> GetInputDirections();
     void RotateClockwise();
+	float GetFrameOutput(int frame);
 }

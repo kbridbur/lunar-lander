@@ -42,6 +42,12 @@ public class GainBlock : MonoBehaviour, IBlock
         this.InputDirections = newDirections;
     }
 
+	public float GetFrameOutput(int frame){
+		return FrameToOutput [frame - 1];
+	}
+
+	//at frame 0 it should output 0 since it had no previous input
+	Dictionary<int, float> FrameToOutput = new Dictionary<int, float>{{-1, 0f}};
     public float Gain = 0;
 	public List<string> InputDirections;
 }

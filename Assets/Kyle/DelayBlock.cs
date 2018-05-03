@@ -6,11 +6,11 @@ public class DelayBlock : MonoBehaviour, IBlock
 {
 	//Because the block may have multiple things calling Evaluate on it per frame we designate an output for each frame
 	public float Evaluate (int frame, List<float> inputs){
-		if (!FrameToInput.ContainsKey (frame)) {
-			FrameToInput [frame] = inputs[0];
+		if (!FrameToOutput.ContainsKey (frame)) {
+			FrameToOutput [frame] = inputs[0];
 			Debug.Log (inputs [0]);
 		}
-		return FrameToInput [frame - 1];
+		return FrameToOutput [frame - 1];
 	}
 
 	public void SetInputDirections(List<string> dirs){
@@ -47,7 +47,11 @@ public class DelayBlock : MonoBehaviour, IBlock
         this.InputDirections = newDirections;
     }
 
-    //at frame 0 it should output 0 since it had no previous input
-    Dictionary<int, float> FrameToInput = new Dictionary<int, float>{{-1, 0f}};
+	public float GetFrameOutput(int frame){
+		return FrameToOutput [frame - 1];
+	}
+
+	//at frame 0 it should output 0 since it had no previous input
+	Dictionary<int, float> FrameToOutput = new Dictionary<int, float>{{-1, 0f}};
 	public List<string> InputDirections;
 }
