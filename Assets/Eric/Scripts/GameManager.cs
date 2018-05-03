@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour {
     {
 		Lander.transform.position = new Vector3 (8.8f, 7, 0);;
 		Physics2D.gravity = Vector2.zero;
+		thrustOutput = 0;
 		Lander.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         simMode = false;
         outputCell = null;
