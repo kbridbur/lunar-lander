@@ -11,6 +11,8 @@ public class Cell : MonoBehaviour {
     public Cell right;
     public GameObject occupantObject;
     public IBlock occupant;
+    public int frameLastEvaluated;
+    public float responseThisFrame;
 
 	// Use this for initialization
 	void Start () {
@@ -50,15 +52,23 @@ public class Cell : MonoBehaviour {
         {
             occupant = occupantObject.GetComponent<IBlock>();
         }
-		Debug.Log (occupantObject);
         List<string> inputDirections = this.occupant.GetInputDirections();
         List<float> inputValues = new List<float>();
         foreach (string inputDirection in inputDirections)
         {
-            float inputVal = getCellAt(inputDirection).evaluate();
+            float inputVal;
+            if (occupantObject.GetComponent<DelayBlock>() != null)
+            {
+                inputVal = occupant.GetFrameOutput(gameManager.frame - 1);
+            }
+            else {
+                inputVal = getCellAt(inputDirection).evaluate();
+            }
             inputValues.Add(inputVal);
         }
-        return occupant.Evaluate(gameManager.frame, inputValues);
+        frameLastEvaluated = gameManager.frame;
+        responseThisFrame = occupant.Evaluate(gameManager.frame, inputValues);
+        return responseThisFrame;
     }
 
     private Cell getCellAt(string direction)
