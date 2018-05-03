@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour {
 	void Update () {
         if (simMode)
         {
-            frame++;
 			altitude = goalHeight - Lander.GetComponent<Thruster> ().GetHeight ();
             GameObject[] inputBlocks = GameObject.FindGameObjectsWithTag("Input");
             foreach (GameObject inputBlock in inputBlocks)
@@ -41,6 +40,7 @@ public class GameManager : MonoBehaviour {
             }
             float output = outputCell.evaluate();
 			thrustOutput = output;
+			frame++;
 			Debug.Log (output);
         }
     }

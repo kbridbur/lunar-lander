@@ -6,6 +6,7 @@ public class WireBlock : MonoBehaviour, IBlock {
 
     public float Evaluate(int frame, List<float> inputs)
     {
+		FrameToOutput [frame] = inputs [0];
         return inputs[0];
     }
 
@@ -45,7 +46,8 @@ public class WireBlock : MonoBehaviour, IBlock {
     }
 
 	public float GetFrameOutput(int frame){
-		return FrameToOutput [frame - 1];
+		Debug.Log (frame);
+		return FrameToOutput [frame];
 	}
 
 	//at frame 0 it should output 0 since it had no previous input

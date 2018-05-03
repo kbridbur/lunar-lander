@@ -5,6 +5,7 @@ using UnityEngine;
 //This is meant to be created for things like the objective height, just give it a value to return every time
 public class BaseBlock : MonoBehaviour, IBlock {
 	public float Evaluate(int frame, List<float> inputs){
+		FrameToOutput [frame] = BaseVal;
 		return BaseVal;
 	}
 
@@ -43,7 +44,7 @@ public class BaseBlock : MonoBehaviour, IBlock {
     }
 
 	public float GetFrameOutput(int frame){
-		return FrameToOutput [frame - 1];
+		return FrameToOutput [frame];
 	}
 
 	//at frame 0 it should output 0 since it had no previous input

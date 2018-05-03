@@ -48,7 +48,7 @@ public class DelayBlock : MonoBehaviour, IBlock
     }
 
 	public float GetFrameOutput(int frame){
-		return FrameToOutput [frame - 1];
+		return FrameToOutput [frame];
 	}
 
 	//at frame 0 it should output 0 since it had no previous input

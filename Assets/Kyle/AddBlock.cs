@@ -6,6 +6,7 @@ using System.Linq;
 public class AddBlock : MonoBehaviour, IBlock
 {
 	public float Evaluate(int frame, List<float> inputs){
+		FrameToOutput [frame] = inputs.Sum (i => i);
 		Debug.Log (inputs);
 		return inputs.Sum(i => i);
 	}
@@ -45,7 +46,8 @@ public class AddBlock : MonoBehaviour, IBlock
     }
 
 	public float GetFrameOutput(int frame){
-		return FrameToOutput [frame - 1];
+		Debug.Log (frame);
+		return FrameToOutput [frame];
 	}
 
 	//at frame 0 it should output 0 since it had no previous input
