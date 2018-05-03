@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour {
             float output = outputCell.evaluate();
 			thrustOutput = output;
 			frame++;
-			Debug.Log (output);
         }
     }
 
