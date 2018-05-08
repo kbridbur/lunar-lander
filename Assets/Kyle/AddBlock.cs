@@ -7,7 +7,11 @@ public class AddBlock : MonoBehaviour, IBlock
 {
 	public float Evaluate(int frame, List<float> inputs){
 		FrameToOutput [frame] = inputs.Sum (i => i);
-		Debug.Log (inputs);
+		string s = "";
+		for (int i = 0; i < inputs.Count; i++) {
+			s += inputs[i] + ", ";
+		}
+		Debug.Log (s);
 		return inputs.Sum(i => i);
 	}
 

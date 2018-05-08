@@ -11,13 +11,14 @@ public class Cell : MonoBehaviour {
     public Cell right;
     public GameObject occupantObject;
     public IBlock occupant;
-    public int frameLastEvaluated;
+    public int frameLastEvaluated = -1;
     public float responseThisFrame;
 
 	// Use this for initialization
 	void Start () {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         checkNeighborCells();
+		frameLastEvaluated = -1;
     }
 	
 	// Update is called once per frame
@@ -34,6 +35,7 @@ public class Cell : MonoBehaviour {
                 Destroy(occupantObject);
             }
             occupantObject = Instantiate(gameManager.getActiveBlock(), this.transform);
+			occupant = occupantObject.GetComponent<IBlock> ();
             occupantObject.transform.localPosition = Vector3.zero;
             occupantObject.transform.localScale = new Vector3(3, 3, 1);
         }
@@ -48,6 +50,9 @@ public class Cell : MonoBehaviour {
 
     public float evaluate()
     {
+		if (gameManager.frame < frameLastEvaluated) {
+			frameLastEvaluated = gameManager.frame - 1;
+		}
         if (occupantObject != null)
         {
             occupant = occupantObject.GetComponent<IBlock>();
@@ -59,7 +64,10 @@ public class Cell : MonoBehaviour {
             float inputVal;
             if (occupantObject.GetComponent<DelayBlock>() != null)
             {
-                inputVal = occupant.GetFrameOutput(gameManager.frame - 1);
+				inputVal = getCellAt(inputDirection).occupant.GetFrameOutput(gameManager.frame - 1);
+				if (getCellAt (inputDirection).frameLastEvaluated < gameManager.frame) {
+					getCellAt (inputDirection).evaluate ();
+				}
             }
             else {
                 inputVal = getCellAt(inputDirection).evaluate();

@@ -8,7 +8,6 @@ public class DelayBlock : MonoBehaviour, IBlock
 	public float Evaluate (int frame, List<float> inputs){
 		if (!FrameToOutput.ContainsKey (frame)) {
 			FrameToOutput [frame] = inputs[0];
-			Debug.Log (inputs [0]);
 		}
 		return FrameToOutput [frame - 1];
 	}

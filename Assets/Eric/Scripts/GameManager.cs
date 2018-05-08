@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
-    public int frame;
+    public int frame = 0;
     private bool simMode = false;
     public Cell outputCell;
     public GameObject activeBlock;
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         if (simMode)
         {
 			altitude = goalHeight - Lander.GetComponent<Thruster> ().GetHeight ();
@@ -42,11 +42,6 @@ public class GameManager : MonoBehaviour {
 			thrustOutput = output;
 			frame++;
         }
-    }
-
-    void FixedUpdate ()
-    {
-        
     }
 
     public GameObject getActiveBlock()

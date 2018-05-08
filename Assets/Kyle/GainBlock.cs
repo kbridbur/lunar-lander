@@ -44,7 +44,6 @@ public class GainBlock : MonoBehaviour, IBlock
     }
 
 	public float GetFrameOutput(int frame){
-		Debug.Log (frame);
 		return FrameToOutput [frame];
 	}
 
