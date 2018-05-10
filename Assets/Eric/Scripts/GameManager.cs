@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
 	float thrustOutput = 0;
 	public GameObject Lander;
 	public float goalHeight = 7;
+    public float startingHeight;
 
 	// Use this for initialization
 	void Start () {
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour {
                 thrustOutput = 0;
             }
 			frame++;
+            Debug.Log(thrustOutput);
         }
     }
 
@@ -89,7 +91,7 @@ public class GameManager : MonoBehaviour {
 
     public void exitSimMode()
     {
-		Lander.transform.position = new Vector3 (10.65f, 6.3f, 0);;
+		Lander.transform.position = new Vector3 (Lander.transform.position.x, startingHeight, 0);;
 		Physics2D.gravity = Vector2.zero;
 		thrustOutput = 0;
 		Lander.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
