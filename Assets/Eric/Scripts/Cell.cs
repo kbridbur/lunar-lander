@@ -13,6 +13,7 @@ public class Cell : MonoBehaviour {
     public IBlock occupant;
     public int frameLastEvaluated = -1;
     public float responseThisFrame;
+    public float spriteScaleFactor;
 
 	// Use this for initialization
 	void Start () {
@@ -37,7 +38,7 @@ public class Cell : MonoBehaviour {
             occupantObject = Instantiate(gameManager.getActiveBlock(), this.transform);
 			occupant = occupantObject.GetComponent<IBlock> ();
             occupantObject.transform.localPosition = Vector3.zero;
-            occupantObject.transform.localScale = new Vector3(3, 3, 1);
+            occupantObject.transform.localScale = new Vector3(spriteScaleFactor, spriteScaleFactor, 1);
         }
         else
         {

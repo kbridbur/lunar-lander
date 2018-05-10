@@ -37,7 +37,7 @@ Transform:
   m_GameObject: {fileID: 1452529314478710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.95, y: 0.95, z: 1}
+  m_LocalScale: {x: 1.45, y: 1.45, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -71,6 +71,9 @@ MonoBehaviour:
   left: {fileID: 0}
   right: {fileID: 0}
   occupantObject: {fileID: 0}
+  frameLastEvaluated: 0
+  responseThisFrame: 0
+  spriteScaleFactor: 3
 --- !u!212 &212939447203677540
 SpriteRenderer:
   m_ObjectHideFlags: 1
