@@ -54,6 +54,7 @@ public class Cell : MonoBehaviour {
 		if (gameManager.frame < frameLastEvaluated) {
 			frameLastEvaluated = gameManager.frame - 1;
 		}
+		frameLastEvaluated = gameManager.frame;
         if (occupantObject != null)
         {
             occupant = occupantObject.GetComponent<IBlock>();
@@ -79,7 +80,6 @@ public class Cell : MonoBehaviour {
             }
             inputValues.Add(inputVal);
         }
-        frameLastEvaluated = gameManager.frame;
         responseThisFrame = occupant.Evaluate(gameManager.frame, inputValues);
         return responseThisFrame;
     }
