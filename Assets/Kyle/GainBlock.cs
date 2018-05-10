@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GainBlock : MonoBehaviour, IBlock
 {
+    public Text GainText;
+
 	public float Evaluate(int frame, List<float> inputs){
 		FrameToOutput [frame] = Gain * inputs [0];
 		return Gain * inputs[0];

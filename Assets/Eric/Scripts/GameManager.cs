@@ -108,7 +108,9 @@ public class GameManager : MonoBehaviour {
         if (float.TryParse(genericConstant.text, out constant))
         {
             genericGain.Gain = constant;
+            genericGain.GainText.text = constant + "";
             genericBase.BaseVal = constant;
+            genericBase.BaseText.text = constant + "";
         }
         else
         {

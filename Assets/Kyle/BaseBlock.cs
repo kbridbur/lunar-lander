@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //This is meant to be created for things like the objective height, just give it a value to return every time
 public class BaseBlock : MonoBehaviour, IBlock {
-	public float Evaluate(int frame, List<float> inputs){
+
+    public Text BaseText;
+
+    public float Evaluate(int frame, List<float> inputs){
 		return BaseVal;
 	}
 
