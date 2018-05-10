@@ -32,7 +32,7 @@ public class ProbePlot : MonoBehaviour {
 			GameObject dot = Instantiate (Dot, new Vector2 (0, 0), Quaternion.identity);
 			dot.transform.parent = GraphBox.transform;
 			//Debug.Log ((Range [0] + (Range [1] - Range [0]) * points [i]));
-			Vector2 b = new Vector2 (-GraphExtents.x + (2*GraphExtents.x) * i/50f, -GraphExtents.y + ((GraphExtents.y)*(points[i] - Range[0]))/(Range[1] - Range[0]));
+			Vector2 b = new Vector2 (-GraphExtents.x + (2*GraphExtents.x) * i/50f, -GraphExtents.y + ((GraphExtents.y*2)*(points[i] - Range[0]))/(Range[1] - Range[0]));
 			dot.transform.localPosition = new Vector3 (b.x, b.y, 0);
 		}
 	}
