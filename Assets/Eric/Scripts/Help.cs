@@ -21,7 +21,6 @@ public class Help : MonoBehaviour {
     void OnMouseEnter ()
     {
         helpTextObject.text = helpText;
-        Debug.Log("Touched");
     }
 
     void OnMouseExit ()

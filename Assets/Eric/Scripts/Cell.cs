@@ -62,16 +62,20 @@ public class Cell : MonoBehaviour {
         List<float> inputValues = new List<float>();
         foreach (string inputDirection in inputDirections)
         {
-            float inputVal;
-            if (occupantObject.GetComponent<DelayBlock>() != null)
+            float inputVal = 0;
+            if(getCellAt(inputDirection) != null)
             {
-				inputVal = getCellAt(inputDirection).occupant.GetFrameOutput(gameManager.frame - 1);
-				if (getCellAt (inputDirection).frameLastEvaluated < gameManager.frame) {
-					getCellAt (inputDirection).evaluate ();
-				}
-            }
-            else {
-                inputVal = getCellAt(inputDirection).evaluate();
+                if (occupantObject.GetComponent<DelayBlock>() != null)
+                {
+                    inputVal = getCellAt(inputDirection).occupant.GetFrameOutput(gameManager.frame - 1);
+                    if (getCellAt(inputDirection).frameLastEvaluated < gameManager.frame)
+                    {
+                        getCellAt(inputDirection).evaluate();
+                    }
+                }
+                else {
+                    inputVal = getCellAt(inputDirection).evaluate();
+                }
             }
             inputValues.Add(inputVal);
         }

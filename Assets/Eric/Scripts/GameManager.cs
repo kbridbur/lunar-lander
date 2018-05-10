@@ -38,8 +38,15 @@ public class GameManager : MonoBehaviour {
             {
                 inputBlock.GetComponent<BaseBlock>().BaseVal = altitude;
             }
-            float output = outputCell.evaluate();
-			thrustOutput = output;
+            if(outputCell != null)
+            {
+                float output = outputCell.evaluate();
+                thrustOutput = output;
+            }
+            else
+            {
+                thrustOutput = 0;
+            }
 			frame++;
         }
     }
@@ -82,7 +89,7 @@ public class GameManager : MonoBehaviour {
 
     public void exitSimMode()
     {
-		Lander.transform.position = new Vector3 (8.8f, 7, 0);;
+		Lander.transform.position = new Vector3 (10.65f, 6.3f, 0);;
 		Physics2D.gravity = Vector2.zero;
 		thrustOutput = 0;
 		Lander.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
