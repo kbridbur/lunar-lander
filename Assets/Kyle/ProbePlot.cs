@@ -47,7 +47,7 @@ public class ProbePlot : MonoBehaviour {
 				max = points [i];
 			}
 		}
-		return new List<float>{Mathf.Clamp(min, 0, 50000), Mathf.Clamp(max, 10, 50000)};
+		return new List<float>{Mathf.Clamp(min, 0, 50000), Mathf.Clamp(max, 20, 50000)};
 	}
 
 	Vector2 GraphExtents;
