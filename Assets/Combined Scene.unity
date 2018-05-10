@@ -3370,7 +3370,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 741483489}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.65, y: 6.3, z: 0}
+  m_LocalPosition: {x: 10.65, y: 6, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children:
   - {fileID: 876337332}
@@ -4287,8 +4287,8 @@ MonoBehaviour:
   genericGain: {fileID: 1355155627}
   genericBase: {fileID: 1588892557}
   Lander: {fileID: 741483489}
-  goalHeight: 7
-  startingHeight: 7
+  goalHeight: 6
+  startingHeight: 6
 --- !u!4 &1022563919
 Transform:
   m_ObjectHideFlags: 0
