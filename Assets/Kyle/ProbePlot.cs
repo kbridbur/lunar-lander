@@ -27,6 +27,9 @@ public class ProbePlot : MonoBehaviour {
 
 	void DisplayPlot(){
 		List<float> Range = GetRange ();
+		if (Range [1] == Range [0]) {
+			Range [1] = Range [0] + 1;
+		}
 		for (int i = 0; i < points.Count; i++) {
 			Vector2 coords = new Vector2 ();
 			GameObject dot = Instantiate (Dot, new Vector2 (0, 0), Quaternion.identity);
