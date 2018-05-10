@@ -39,15 +39,16 @@ public class ProbePlot : MonoBehaviour {
 
 	List<float> GetRange(){
 		float min = Mathf.Infinity;
-		float max = -Mathf.Infinity;
+		float max = 0;
 		for (int i = 0; i < points.Count; i++) {
 			if (points [i] < min) {
 				min = points [i];
-			} else if (points [i] > max) {
+			} 
+			if (points [i] > max) {
 				max = points [i];
 			}
 		}
-		return new List<float>{Mathf.Clamp(min, 0, 50000), Mathf.Clamp(max, 20, 50000)};
+		return new List<float>{Mathf.Clamp(min, 0, 50000), Mathf.Clamp(max, 1, 50000)};
 	}
 
 	Vector2 GraphExtents;
