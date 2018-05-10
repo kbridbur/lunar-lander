@@ -3292,7 +3292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b275505d06861fb478f040f0fd5c950f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlameScale: 0.3
   ThrustManager: {fileID: 1022563917}
   Ground: {fileID: 781940448}
 --- !u!50 &741483491
@@ -4289,6 +4288,7 @@ MonoBehaviour:
   genericBase: {fileID: 1588892557}
   Lander: {fileID: 741483489}
   goalHeight: 7
+  startingHeight: 7
 --- !u!4 &1022563919
 Transform:
   m_ObjectHideFlags: 0
