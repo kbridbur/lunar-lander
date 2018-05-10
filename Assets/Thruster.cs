@@ -25,7 +25,7 @@ public class Thruster : MonoBehaviour {
 		float scaleConst = Mathf.Clamp(.3f * Mathf.Log(t), 0f, 1f);
 		Flame.transform.localScale = new Vector2(scaleConst, scaleConst);
 		Flame.transform.localPosition = new Vector2(0, 
-			-(GetComponent<SpriteRenderer>().bounds.extents.y + 3*Flame.GetComponent<SpriteRenderer> ().bounds.extents.y));
+			-.5f*(GetComponent<SpriteRenderer>().sprite.bounds.extents.y + Flame.GetComponent<SpriteRenderer> ().sprite.bounds.extents.y));
 	}
 	GameObject Flame;
 	Rigidbody2D rb;
