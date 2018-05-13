@@ -11,8 +11,11 @@ public class ProbePlot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		points.Add (Source.GetComponent<GameManager>().GetThrust());//get value from source
-		if (points.Count > 50){
+		if (input.occupant == null) {
+			return;
+		}
+		points.Add (input.occupant.GetFrameOutput(manager.frame-1));//get value from source
+		if (points.Count > 100){
 			points.RemoveAt (0);
 		}
 		SpriteRenderer[] s = GraphBox.GetComponentsInChildren<SpriteRenderer> ();
@@ -30,12 +33,13 @@ public class ProbePlot : MonoBehaviour {
 		if (Range [1] == Range [0]) {
 			Range [1] = Range [0] + 1;
 		}
+		minText.text = Mathf.RoundToInt(Range [0]).ToString();
+		maxText.text = Mathf.RoundToInt(Range [1]).ToString();
 		for (int i = 0; i < points.Count; i++) {
 			Vector2 coords = new Vector2 ();
 			GameObject dot = Instantiate (Dot, new Vector2 (0, 0), Quaternion.identity);
 			dot.transform.parent = GraphBox.transform;
-			//Debug.Log ((Range [0] + (Range [1] - Range [0]) * points [i]));
-			Vector2 b = new Vector2 (-GraphExtents.x + (2*GraphExtents.x) * i/50f, -GraphExtents.y + ((GraphExtents.y*2)*(points[i] - Range[0]))/(Range[1] - Range[0]));
+			Vector2 b = new Vector2 (-GraphExtents.x + (2*GraphExtents.x) * i/100f, -GraphExtents.y + ((GraphExtents.y*2)*(points[i] - Range[0]))/(Range[1] - Range[0]));
 			dot.transform.localPosition = new Vector3 (b.x, b.y, 0);
 		}
 	}
@@ -51,7 +55,7 @@ public class ProbePlot : MonoBehaviour {
 				max = points [i];
 			}
 		}
-		return new List<float>{Mathf.Clamp(min, 0, 50000), Mathf.Clamp(max, 1, 50000)};
+		return new List<float>{min, max};
 	}
 
 	Vector2 GraphExtents;
@@ -59,4 +63,9 @@ public class ProbePlot : MonoBehaviour {
 	public GameObject Source;
 	public GameObject Dot;
 	public GameObject GraphBox;
+	public GameManager manager;
+	public Cell input;
+
+	public TextMesh minText;
+	public TextMesh maxText;
 }

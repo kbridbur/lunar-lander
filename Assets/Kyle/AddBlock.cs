@@ -7,11 +7,6 @@ public class AddBlock : MonoBehaviour, IBlock
 {
 	public float Evaluate(int frame, List<float> inputs){
 		FrameToOutput [frame] = inputs.Sum (i => i);
-		string s = "";
-		for (int i = 0; i < inputs.Count; i++) {
-			s += inputs[i] + ", ";
-		}
-		Debug.Log (s);
 		return inputs.Sum(i => i);
 	}
 
@@ -50,7 +45,6 @@ public class AddBlock : MonoBehaviour, IBlock
     }
 
 	public float GetFrameOutput(int frame){
-		Debug.Log (frame);
 		return FrameToOutput [frame];
 	}
 

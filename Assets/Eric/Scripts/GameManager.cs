@@ -50,7 +50,6 @@ public class GameManager : MonoBehaviour {
                 thrustOutput = 0;
             }
 			frame++;
-            Debug.Log(thrustOutput);
         }
     }
 
