@@ -24,7 +24,11 @@ public class Cell : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (this == gameManager.GetProbeCell ()) {
+			transform.GetChild (0).GetComponent<SpriteRenderer> ().color = new Color (117, 249, 154, .4f);
+		} else if (transform.childCount > 0){
+			transform.GetChild (0).GetComponent<SpriteRenderer> ().color = Color.white;
+		}
 	}
 
     void OnMouseDown ()
