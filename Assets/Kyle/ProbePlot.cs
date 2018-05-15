@@ -7,12 +7,12 @@ public class ProbePlot : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GraphExtents = new Vector2(GraphBox.GetComponent<SpriteRenderer>().sprite.bounds.extents.x, GraphBox.GetComponent<SpriteRenderer>().sprite.bounds.extents.y);
-		input = manager.GetProbeCell ();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (input.occupant == null) {
+		input = manager.GetProbeCell ();
+		if (input == null || input.occupant == null) {
 			return;
 		}
 		points.Add (input.occupant.GetFrameOutput(manager.frame-1));//get value from source
