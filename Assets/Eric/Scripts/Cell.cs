@@ -31,6 +31,10 @@ public class Cell : MonoBehaviour {
     {
         if (gameManager.getActiveBlock() != null)
         {
+			if (gameManager.getActiveBlock ().name == "probe") {
+				gameManager.SetProbeCell (this);
+				return;
+			}
             if(occupantObject != null)
             {
                 Destroy(occupantObject);

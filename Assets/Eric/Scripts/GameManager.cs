@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
     public InputField genericConstant;
     public GainBlock genericGain;
     public BaseBlock genericBase;
+	public Cell probeCell;
 	float thrustOutput = 0;
 	public GameObject Lander;
 	public GameObject Ground;
@@ -129,5 +130,12 @@ public class GameManager : MonoBehaviour {
         
     }
 
+	public void SetProbeCell(Cell c){
+		probeCell = c;
+	}
+
+	public Cell GetProbeCell(){
+		return probeCell;
+	}
 
 }

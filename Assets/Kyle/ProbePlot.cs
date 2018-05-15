@@ -7,6 +7,7 @@ public class ProbePlot : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GraphExtents = new Vector2(GraphBox.GetComponent<SpriteRenderer>().sprite.bounds.extents.x, GraphBox.GetComponent<SpriteRenderer>().sprite.bounds.extents.y);
+		input = manager.GetProbeCell ();
 	}
 	
 	// Update is called once per frame
@@ -60,7 +61,6 @@ public class ProbePlot : MonoBehaviour {
 
 	Vector2 GraphExtents;
 	List<float> points = new List<float>();
-	public GameObject Source;
 	public GameObject Dot;
 	public GameObject GraphBox;
 	public GameManager manager;
