@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour {
     public GameObject activeBlock;
     public float altitude;
     public GameObject genericBlocks;
-    public InputField genericConstant;
+    public InputField gainConstant;
+    public InputField baseConstant;
     public GainBlock genericGain;
     public BaseBlock genericBase;
 	public Cell probeCell;
@@ -111,26 +112,37 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void setGenericConstant()
+    public void setGainConstant()
     {
-		Debug.Log (genericConstant.text);
         float constant;
-        if (float.TryParse(genericConstant.text, out constant))
+        if (float.TryParse(gainConstant.text, out constant))
         {
             genericGain.Gain = constant;
             genericGain.GainText.text = constant + "";
+        }
+        else
+        {
+            genericGain.Gain = 0;
+        }
+        
+    }
+
+    public void setBaseConstant()
+    {
+        float constant;
+        if (float.TryParse(baseConstant.text, out constant))
+        {
             genericBase.BaseVal = constant;
             genericBase.BaseText.text = constant + "";
         }
         else
         {
-            genericGain.Gain = 0;
             genericBase.BaseVal = 0;
         }
-        
+
     }
 
-	public void SetProbeCell(Cell c){
+    public void SetProbeCell(Cell c){
 		probeCell = c;
 	}
 
