@@ -6,7 +6,17 @@ public class OutputBlock : MonoBehaviour, IBlock {
 
     public float Evaluate(int frame, List<float> inputs)
     {
-		FrameToOutput [frame] = inputs [0];
+        float clampedInput;
+        if (inputs[0] <= 0)
+        {
+            clampedInput = 0;
+        }
+        else
+        {
+            clampedInput = inputs[0];
+        }
+        
+		FrameToOutput [frame] = clampedInput;
         return inputs[0];
     }
 
