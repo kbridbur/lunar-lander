@@ -21,10 +21,15 @@ public class BaseBlock : MonoBehaviour, IBlock {
         return InputDirections;
     }
 
-    public void RotateClockwise()
+    public List<string> GetOutputDirections()
+    {
+        return OutputDirections;
+    }
+
+    List<string> rotateListClockwise(List<string> directions)
     {
         List<string> newDirections = new List<string>();
-        foreach (string direction in InputDirections)
+        foreach (string direction in directions)
         {
             if (direction.Equals("up"))
             {
@@ -43,14 +48,21 @@ public class BaseBlock : MonoBehaviour, IBlock {
                 newDirections.Add("up");
             }
         }
-        this.InputDirections = newDirections;
+        return newDirections;
     }
 
-	public float GetFrameOutput(int frame){
-		return BaseVal;
-	}
+    public void RotateClockwise()
+    {
+        this.InputDirections = rotateListClockwise(InputDirections);
+        this.OutputDirections = rotateListClockwise(OutputDirections);
+    }
+
+    public float GetFrameOutput(int frame){
+        return BaseVal;
+    }
 
 	//at frame 0 it should output 0 since it had no previous input
     public float BaseVal;
 	public List<string> InputDirections;
+    public List<string> OutputDirections;
 }

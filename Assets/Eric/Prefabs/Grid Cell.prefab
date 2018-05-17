@@ -73,7 +73,7 @@ MonoBehaviour:
   occupantObject: {fileID: 0}
   frameLastEvaluated: 0
   responseThisFrame: 0
-  spriteScaleFactor: 3
+  spriteScaleFactor: 0.28
 --- !u!212 &212939447203677540
 SpriteRenderer:
   m_ObjectHideFlags: 1

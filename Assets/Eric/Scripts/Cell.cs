@@ -35,8 +35,9 @@ public class Cell : MonoBehaviour {
     {
         if (gameManager.getActiveBlock() != null)
         {
-			if (gameManager.getActiveBlock ().name == "Wire") {
+			if (gameManager.getActiveBlock ().name == "Probe") {
 				gameManager.SetProbeCell (this);
+                return;
 			}
             if(occupantObject != null)
             {
@@ -52,6 +53,7 @@ public class Cell : MonoBehaviour {
             if (occupantObject != null)
             {
                 Destroy(occupantObject);
+                occupantObject = null;
             }
         }
     }
@@ -71,7 +73,7 @@ public class Cell : MonoBehaviour {
         foreach (string inputDirection in inputDirections)
         {
             float inputVal = 0;
-            if(getCellAt(inputDirection) != null)
+            if (getCellAt(inputDirection) != null && getCellAt(inputDirection).occupantObject != null && getCellAt(inputDirection).occupant.GetOutputDirections().Contains(oppositeDirection(inputDirection)))
             {
                 if (occupantObject.GetComponent<DelayBlock>() != null)
                 {
@@ -89,6 +91,25 @@ public class Cell : MonoBehaviour {
         }
         responseThisFrame = occupant.Evaluate(gameManager.frame, inputValues);
         return responseThisFrame;
+    }
+
+    string oppositeDirection(string direction)
+    {
+        if (direction.Equals("up"))
+        {
+            return "down";
+        }
+        else if (direction.Equals("down"))
+        {
+            return "up";
+        }
+        else if (direction.Equals("left"))
+        {
+            return "right";
+        }
+        else {
+            return "left";
+        }
     }
 
     private Cell getCellAt(string direction)
