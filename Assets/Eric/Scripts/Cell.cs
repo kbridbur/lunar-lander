@@ -45,6 +45,11 @@ public class Cell : MonoBehaviour {
             if(occupantObject != null)
             {
                 Destroy(occupantObject);
+                occupantObject = null;
+                if (this == gameManager.probeCell)
+                {
+                    gameManager.probeCell = null;
+                }
             }
             occupantObject = Instantiate(gameManager.getActiveBlock(), this.transform);
 			occupant = occupantObject.GetComponent<IBlock> ();
@@ -57,6 +62,10 @@ public class Cell : MonoBehaviour {
             {
                 Destroy(occupantObject);
                 occupantObject = null;
+                if (this == gameManager.probeCell)
+                {
+                    gameManager.probeCell = null;
+                }
             }
         }
     }

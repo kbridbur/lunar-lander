@@ -11,7 +11,7 @@ public class Thruster : MonoBehaviour {
 	}
 
 	public float GetHeight(){
-		return transform.position.y - Ground.transform.position.y;
+		return (transform.position.y - Ground.transform.position.y) * 10;
 	}
 
 	// Update is called once per frame

@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour {
 	public GameObject Ground;
 	public float goalHeight = 7;
     public float startingHeight;
+    public Button startSimButton;
+    public Button stopSimButton; 
 
 	// Use this for initialization
 	void Start () {
@@ -36,7 +38,7 @@ public class GameManager : MonoBehaviour {
 	void FixedUpdate () {
         if (simMode)
         {
-			altitude = (goalHeight - Ground.transform.position.y) - Lander.GetComponent<Thruster> ().GetHeight ();
+			altitude = Lander.GetComponent<Thruster> ().GetHeight ();
             GameObject[] inputBlocks = GameObject.FindGameObjectsWithTag("Input");
             foreach (GameObject inputBlock in inputBlocks)
             {
@@ -88,6 +90,8 @@ public class GameManager : MonoBehaviour {
             }
         }
         simMode = true;
+        startSimButton.interactable = false;
+        stopSimButton.interactable = true;
 		Physics2D.gravity = new Vector2 (0, -9.8f);
     }
 
@@ -98,6 +102,8 @@ public class GameManager : MonoBehaviour {
 		thrustOutput = 0;
 		Lander.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         simMode = false;
+        startSimButton.interactable = true;
+        stopSimButton.interactable = false;
         outputCell = null;
         frame = 0;
     }
