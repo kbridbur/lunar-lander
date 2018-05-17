@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour {
     public Button startSimButton;
     public Button stopSimButton;
     public LevelManager levelManager;
+    public Text goalText;
 
 	// Use this for initialization
 	void Start () {
@@ -94,6 +95,7 @@ public class GameManager : MonoBehaviour {
         startSimButton.interactable = false;
         stopSimButton.interactable = true;
         levelManager.turnOffLevelSelect();
+        goalText.enabled = false;
 		Physics2D.gravity = new Vector2 (0, -9.8f);
     }
 
@@ -107,6 +109,7 @@ public class GameManager : MonoBehaviour {
         startSimButton.interactable = true;
         stopSimButton.interactable = false;
         levelManager.turnOnLevelSelect();
+        goalText.enabled = true;
         outputCell = null;
         frame = 0;
     }
