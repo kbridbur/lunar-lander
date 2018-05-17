@@ -11,7 +11,7 @@ public class Thruster : MonoBehaviour {
 	}
 
 	public float GetHeight(){
-		return (transform.position.y - Ground.transform.position.y) * 10;
+		return ((transform.position.y - TopOfGround.transform.position.y + altitudeOffset) * 10);
 	}
 
 	// Update is called once per frame
@@ -31,4 +31,6 @@ public class Thruster : MonoBehaviour {
 	Rigidbody2D rb;
 	public GameObject ThrustManager;
 	public GameObject Ground;
+    public GameObject TopOfGround;
+    public float altitudeOffset;
 }
